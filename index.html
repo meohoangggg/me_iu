@@ -1092,7 +1092,7 @@ body{
         22px;
 
     background:
-        url("./me.jpg")
+        url("./me.png")
         center/cover;
 
     position:relative;
@@ -1695,7 +1695,7 @@ body{
 
 .g1{
     background-image:
-        url("./me.jpg");
+        url("./me.png");
 }
 
 .g2{
@@ -3450,19 +3450,14 @@ envelope.addEventListener(
 
 function goTo(index){
 
-    if(index < 0){
+    /* Không còn wrap-around: ở trang đầu bấm prev, ở trang
+       cuối bấm next đều không làm gì cả */
 
-        index =
-            pages.length - 1;
+    if(index < 0 || index >= pages.length){
 
-    }
-
-    if(index >= pages.length){
-
-        index = 0;
+        return;
 
     }
-
 
     if(index === currentPage){
 
@@ -3581,63 +3576,6 @@ document.addEventListener(
 
         }
 
-    }
-);
-
-
-/* =========================================================
-   SWIPE
-========================================================= */
-
-let touchStartX = 0;
-
-document.addEventListener(
-    "touchstart",
-    event => {
-
-        touchStartX =
-            event.changedTouches[0]
-            .screenX;
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-document.addEventListener(
-    "touchend",
-    event => {
-
-        const touchEndX =
-            event.changedTouches[0]
-            .screenX;
-
-        const difference =
-            touchStartX -
-            touchEndX;
-
-
-        if(
-            Math.abs(difference) > 60
-        ){
-
-            if(difference > 0){
-
-                nextPage();
-
-            }else{
-
-                previousPage();
-
-            }
-
-        }
-
-    },
-    {
-        passive:true
     }
 );
 

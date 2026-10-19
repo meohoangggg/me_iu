@@ -6,7 +6,6 @@
 
 <title>Gửi Mẹ — 20/10 ❤️</title>
 
-<!-- FONT NHẸ NHÀNG HƠN -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -246,9 +245,6 @@ body{
         );
 }
 
-
-/* BACK */
-
 .envelope-back{
     position:absolute;
     inset:0;
@@ -264,9 +260,6 @@ body{
 
     z-index:1;
 }
-
-
-/* LETTER */
 
 .letter-inside{
 
@@ -321,9 +314,6 @@ body{
     color:#805565;
 }
 
-
-/* SIDE TRIANGLES */
-
 .envelope-left{
     position:absolute;
 
@@ -356,9 +346,6 @@ body{
     z-index:5;
 }
 
-
-/* BOTTOM */
-
 .envelope-bottom{
     position:absolute;
 
@@ -374,9 +361,6 @@ body{
 
     z-index:6;
 }
-
-
-/* FLAP */
 
 .envelope-flap{
 
@@ -409,7 +393,6 @@ body{
         );
 }
 
-
 .envelope.open .letter-inside{
 
     transform:
@@ -428,7 +411,6 @@ body{
     z-index:1;
 }
 
-
 .envelope.open{
 
     transform:
@@ -437,7 +419,6 @@ body{
     transition:
         transform 1s ease;
 }
-
 
 .intro-hint{
 
@@ -1080,8 +1061,13 @@ body{
         both;
 }
 
-.photo{
 
+/* =====================================================
+   FIX LỖI ẢNH TRANG 1 BẰNG CSS THUẦN
+   Tự động thử .png -> .jpg -> fallback màu hồng
+===================================================== */
+
+.photo{
     width:100%;
     height:100%;
 
@@ -1091,9 +1077,14 @@ body{
         22px
         22px;
 
-    background:
-        url("./me.png")
-        center/cover;
+    /* Màu nền dự phòng nếu ảnh không tồn tại */
+    background-color: #df6688;
+
+    /* Trình duyệt tự thử ảnh .png trước, nếu lỗi thử ngay .jpg */
+    background-image: url("./me.png"), url("./me.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     position:relative;
 
@@ -1101,18 +1092,18 @@ body{
 }
 
 .photo:after{
-
     content:"";
-
     position:absolute;
-
     inset:0;
 
     background:
         linear-gradient(
-            transparent 55%,
-            rgba(55,20,35,.48)
+            transparent 60%,
+            rgba(55,20,35,.50)
         );
+
+    pointer-events:none;
+    z-index:1;
 }
 
 .photo-caption{
@@ -1134,6 +1125,10 @@ body{
     font-size:32px;
 
     color:#fff;
+
+    text-shadow:
+        0 2px 6px
+        rgba(40,10,25,.5);
 }
 
 .decor{
@@ -1348,29 +1343,22 @@ body{
     z-index:5;
 }
 
+/* Fix ảnh Polaroid dùng background */
 .polaroid-img{
 
     height:255px;
 
-    background-size:cover;
+    background-color: #f7b5c5;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    background-position:center;
+    position:relative;
 }
 
-.p1{
-    background-image:
-        url("./photo1.jpg");
-}
-
-.p2{
-    background-image:
-        url("./photo2.jpg");
-}
-
-.p3{
-    background-image:
-        url("./photo3.jpg");
-}
+.p1{ background-image: url("./photo1.jpg"), url("./photo1.png"); }
+.p2{ background-image: url("./photo2.jpg"), url("./photo2.png"); }
+.p3{ background-image: url("./photo3.jpg"), url("./photo3.png"); }
 
 .polaroid-caption{
 
@@ -1646,15 +1634,17 @@ body{
     gap:15px;
 }
 
+/* Fix ảnh Gallery dùng background */
 .gallery-img{
 
     height:185px;
 
     border-radius:20px;
 
-    background-size:cover;
-
-    background-position:center;
+    background-color: #f7b5c5;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     transition:.45s;
 
@@ -1662,6 +1652,11 @@ body{
 
     overflow:hidden;
 }
+
+.g1{ background-image: url("./me.png"), url("./me.jpg"); }
+.g2{ background-image: url("./photo1.jpg"), url("./photo1.png"); }
+.g3{ background-image: url("./photo2.jpg"), url("./photo2.png"); }
+.g4{ background-image: url("./photo3.jpg"), url("./photo3.png"); }
 
 .gallery-img:after{
 
@@ -1680,6 +1675,8 @@ body{
     opacity:0;
 
     transition:.4s;
+
+    pointer-events:none;
 }
 
 .gallery-img:hover{
@@ -1691,26 +1688,6 @@ body{
 .gallery-img:hover:after{
 
     opacity:1;
-}
-
-.g1{
-    background-image:
-        url("./me.png");
-}
-
-.g2{
-    background-image:
-        url("./photo1.jpg");
-}
-
-.g3{
-    background-image:
-        url("./photo2.jpg");
-}
-
-.g4{
-    background-image:
-        url("./photo3.jpg");
 }
 
 
@@ -2411,1703 +2388,531 @@ body{
 <body>
 
 
-<!-- =========================================================
-     CURSOR
-========================================================= -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 
-<div
-    class="cursor"
-    id="cursor"
-></div>
-
-<div
-    class="cursor-dot"
-    id="cursorDot"
-></div>
-
-
-<!-- =========================================================
-     LOADING
-========================================================= -->
 
 <div id="loading">
-
-    <div class="loader-heart">
-        ❤️
-    </div>
-
-    <div class="loader-text">
-        Chuẩn bị một món quà cho mẹ...
-    </div>
-
-    <div class="loader-line">
-        <span></span>
-    </div>
-
+    <div class="loader-heart">❤️</div>
+    <div class="loader-text">Chuẩn bị một món quà cho mẹ...</div>
+    <div class="loader-line"><span></span></div>
 </div>
 
-
-<!-- =========================================================
-     ENVELOPE INTRO
-========================================================= -->
 
 <div id="intro">
-
     <div class="intro-content">
+        <div class="intro-small">Một món quà nhỏ dành cho mẹ</div>
 
-        <div class="intro-small">
-            Một món quà nhỏ dành cho mẹ
-        </div>
-
-
-        <div
-            class="envelope"
-            id="envelope"
-        >
-
-            <!-- BACK -->
-
+        <div class="envelope" id="envelope">
             <div class="envelope-back"></div>
-
-
-            <!-- LETTER -->
-
             <div class="letter-inside">
-
-                <h2>
-                    Gửi Mẹ ❤️
-                </h2>
-
-                <p>
-                    Có một điều con muốn nói...
-                </p>
-
+                <h2>Gửi Mẹ ❤️</h2>
+                <p>Có một điều con muốn nói...</p>
             </div>
-
-
-            <!-- SIDES -->
-
             <div class="envelope-left"></div>
-
             <div class="envelope-right"></div>
-
-
-            <!-- BOTTOM -->
-
             <div class="envelope-bottom"></div>
-
-
-            <!-- FLAP -->
-
             <div class="envelope-flap"></div>
-
         </div>
 
-
-        <div class="intro-hint">
-            Chạm vào lá thư để mở ❤️
-        </div>
-
+        <div class="intro-hint">Chạm vào lá thư để mở ❤️</div>
     </div>
-
 </div>
 
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
 
 <div id="main">
 
-
-    <!-- BACKGROUND -->
-
     <div class="background">
-
         <div class="glow one"></div>
-
         <div class="glow two"></div>
-
         <div class="glow three"></div>
-
     </div>
 
-
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
-
     <nav class="nav">
-
         <div class="logo">
-
             ♡ Dành cho Mẹ
-
-            <span>
-                20.10
-            </span>
-
+            <span>20.10</span>
         </div>
-
 
         <div class="nav-menu">
-
-            <button onclick="goTo(0)">
-                Trang chủ
-            </button>
-
-            <button onclick="goTo(1)">
-                Lời chúc
-            </button>
-
-            <button onclick="goTo(2)">
-                Kỷ niệm
-            </button>
-
-            <button onclick="goTo(3)">
-                Cảm ơn
-            </button>
-
-            <button onclick="goTo(5)">
-                Hình ảnh
-            </button>
-
+            <button onclick="goTo(0)">Trang chủ</button>
+            <button onclick="goTo(1)">Lời chúc</button>
+            <button onclick="goTo(2)">Kỷ niệm</button>
+            <button onclick="goTo(3)">Cảm ơn</button>
+            <button onclick="goTo(5)">Hình ảnh</button>
         </div>
 
-
-        <div
-            class="progress"
-            id="progress"
-        ></div>
-
+        <div class="progress" id="progress"></div>
     </nav>
 
 
-    <!-- =====================================================
-         PAGES
-    ====================================================== -->
-
     <div class="pages">
 
-
-        <!-- =================================================
-             PAGE 1
-        ================================================== -->
-
+        <!-- PAGE 1 -->
         <section class="page active">
-
             <div class="container hero">
 
-
                 <div class="hero-copy">
-
-                    <div class="badge">
-                        🌷 Chúc mừng ngày Phụ nữ Việt Nam
-                    </div>
-
-
+                    <div class="badge">🌷 Chúc mừng ngày Phụ nữ Việt Nam</div>
                     <h1 class="title">
-
                         20 - 10
-
                         <br>
-
-                        <span class="script">
-                            Gửi người con yêu nhất
-                        </span>
-
+                        <span class="script">Gửi người con yêu nhất</span>
                     </h1>
-
-
                     <p class="subtitle">
-
-                        Mẹ là người đã cho con
-                        cả bầu trời,
-                        là nơi con luôn có thể trở về,
-                        và là người yêu thương con
-                        theo cách dịu dàng nhất.
-
+                        Mẹ là người đã cho con cả bầu trời, là nơi con luôn có thể trở về, và là người yêu thương con theo cách dịu dàng nhất.
                     </p>
-
-
-                    <button
-                        class="btn"
-                        onclick="goTo(1)"
-                    >
-
-                        Mở món quà của con ❤️
-
-                    </button>
-
+                    <button class="btn" onclick="goTo(1)">Mở món quà của con ❤️</button>
                 </div>
-
 
                 <div class="hero-visual">
-
-                    <div class="decor a">
-                        🌸
-                    </div>
-
-                    <div class="decor b">
-                        🌷
-                    </div>
-
-                    <div class="decor c">
-                        ♡
-                    </div>
-
+                    <div class="decor a">🌸</div>
+                    <div class="decor b">🌷</div>
+                    <div class="decor c">♡</div>
 
                     <div class="main-photo">
-
                         <div class="photo">
-
-                            <div class="photo-caption">
-                                Mẹ là điều tuyệt vời nhất ❤️
-                            </div>
-
+                            <div class="photo-caption">Mẹ là điều tuyệt vời nhất ❤️</div>
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
-
         </section>
 
 
-        <!-- =================================================
-             PAGE 2
-        ================================================== -->
-
+        <!-- PAGE 2 -->
         <section class="page">
-
             <div class="container letter">
-
-                <div class="badge">
-                    💌 Một lá thư nhỏ
-                </div>
-
-
+                <div class="badge">💌 Một lá thư nhỏ</div>
                 <h1 class="title">
-
                     Lời chúc
-
-                    <span class="script">
-                        từ Bảo
-                    </span>
-
+                    <span class="script">từ Bảo</span>
                 </h1>
-
 
                 <div class="letter-paper">
-
                     <div class="letter-text">
-
                         Mẹ à...
-
                         <br><br>
-
-                        Nhân ngày 20/10,
-                        con chúc mẹ luôn mạnh khỏe,
-                        luôn vui vẻ và luôn nở
-                        nụ cười thật đẹp.
-
+                        Nhân ngày 20/10, con chúc mẹ luôn mạnh khỏe, luôn vui vẻ và luôn nở nụ cười thật đẹp.
                         <br><br>
-
-                        Cảm ơn mẹ vì những bữa cơm,
-                        những lời nhắc nhở,
-                        những lần chờ con về,
-                        và tất cả những điều mẹ
-                        đã âm thầm làm cho con.
-
+                        Cảm ơn mẹ vì những bữa cơm, những lời nhắc nhở, những lần chờ con về, và tất cả những điều mẹ đã âm thầm làm cho con.
                         <br><br>
-
-                        Có thể con không thường xuyên
-                        nói ra...
-
+                        Có thể con không thường xuyên nói ra...
                         <br>
-
-                        nhưng con yêu mẹ
-                        <strong>
-                            rất rất nhiều.
-                        </strong>
-
+                        nhưng con yêu mẹ <strong>rất rất nhiều.</strong>
                         <br><br>
-
-                        Chúc mẹ một ngày 20/10
-                        thật hạnh phúc! ❤️
-
+                        Chúc mẹ một ngày 20/10 thật hạnh phúc! ❤️
                     </div>
-
                 </div>
 
-
-                <button
-                    class="btn"
-                    onclick="showPopup()"
-                >
-                    Con còn một điều muốn nói...
-                </button>
-
+                <button class="btn" onclick="showPopup()">Con còn một điều muốn nói...</button>
             </div>
-
         </section>
 
 
-        <!-- =================================================
-             PAGE 3
-        ================================================== -->
-
+        <!-- PAGE 3 -->
         <section class="page">
-
             <div class="container memories">
-
-                <div class="badge">
-                    📸 Những điều con nhớ
-                </div>
-
-
+                <div class="badge">📸 Những điều con nhớ</div>
                 <h1 class="title">
-
                     Những kỷ niệm
-
-                    <span class="script">
-                        đẹp nhất
-                    </span>
-
+                    <span class="script">đẹp nhất</span>
                 </h1>
-
-
-                <p
-                    class="subtitle"
-                    style="
-                    margin-left:auto;
-                    margin-right:auto;
-                    "
-                >
-
-                    Có những khoảnh khắc
-                    rất bình thường,
-                    mà sau này con mới nhận ra
-                    đó chính là những ký ức
-                    quý giá nhất.
-
+                <p class="subtitle" style="margin-left:auto; margin-right:auto;">
+                    Có những khoảnh khắc rất bình thường, mà sau này con mới nhận ra đó chính là những ký ức quý giá nhất.
                 </p>
-
 
                 <div class="memory-grid">
-
-
                     <div class="polaroid">
-
                         <div class="polaroid-img p1"></div>
-
-                        <div class="polaroid-caption">
-
-                            Những ngày mẹ luôn ở bên con...
-
-                        </div>
-
+                        <div class="polaroid-caption">Những ngày mẹ luôn ở bên con...</div>
                     </div>
-
-
                     <div class="polaroid">
-
                         <div class="polaroid-img p2"></div>
-
-                        <div class="polaroid-caption">
-
-                            Mẹ luôn là người ủng hộ con...
-
-                        </div>
-
+                        <div class="polaroid-caption">Mẹ luôn là người ủng hộ con...</div>
                     </div>
-
-
                     <div class="polaroid">
-
                         <div class="polaroid-img p3"></div>
-
-                        <div class="polaroid-caption">
-
-                            Và mẹ luôn là người con yêu nhất.
-
-                        </div>
-
+                        <div class="polaroid-caption">Và mẹ luôn là người con yêu nhất.</div>
                     </div>
-
-
                 </div>
-
             </div>
-
         </section>
 
 
-        <!-- =================================================
-             PAGE 4
-        ================================================== -->
-
+        <!-- PAGE 4 -->
         <section class="page">
-
             <div class="container thanks">
-
-                <div class="badge">
-                    🌷 Có những điều con muốn cảm ơn
-                </div>
-
-
+                <div class="badge">🌷 Có những điều con muốn cảm ơn</div>
                 <h1 class="title">
-
                     Cảm ơn
-
-                    <span class="script">
-                        mẹ
-                    </span>
-
+                    <span class="script">mẹ</span>
                 </h1>
-
-
-                <p
-                    class="subtitle"
-                    style="
-                    margin-left:auto;
-                    margin-right:auto;
-                    "
-                >
-
-                    Có lẽ cả đời này con
-                    cũng không thể nói hết
-                    được những điều con biết ơn mẹ.
-
+                <p class="subtitle" style="margin-left:auto; margin-right:auto;">
+                    Có lẽ cả đời này con cũng không thể nói hết được những điều con biết ơn mẹ.
                 </p>
-
 
                 <div class="thanks-grid">
-
-
                     <div class="thanks-card">
-
-                        <div class="thanks-icon">
-                            ❤️
-                        </div>
-
-                        <h3>
-                            Vì nồi canh nhạt như nước lã
-                        </h3>
-
+                        <div class="thanks-icon">❤️</div>
+                        <h3>Vì nồi canh nhạt như nước lã</h3>
                     </div>
-
-
                     <div class="thanks-card">
-
-                        <div class="thanks-icon">
-                            🤗
-                        </div>
-
-                        <h3>
-                            Vì rau muống xào như luộc
-                        </h3>
-
+                        <div class="thanks-icon">🤗</div>
+                        <h3>Vì rau muống xào như luộc</h3>
                     </div>
-
-
                     <div class="thanks-card">
-
-                        <div class="thanks-icon">
-                            🌷
-                        </div>
-
-                        <h3>
-                            Vì những hy sinh
-                        </h3>
-
+                        <div class="thanks-icon">🌷</div>
+                        <h3>Vì những hy sinh</h3>
                     </div>
-
-
                     <div class="thanks-card">
-
-                        <div class="thanks-icon">
-                            🏠
-                        </div>
-
-                        <h3>
-                            Vì luôn giao việc nhà
-                        </h3>
-
+                        <div class="thanks-icon">🏠</div>
+                        <h3>Vì luôn giao việc nhà</h3>
                     </div>
-
-
                     <div class="thanks-card">
-
-                        <div class="thanks-icon">
-                            ✨
-                        </div>
-
-                        <h3>
-                            Vì luôn chửi con
-                        </h3>
-
+                        <div class="thanks-icon">✨</div>
+                        <h3>Vì luôn chửi con</h3>
                     </div>
-
-
                     <div class="thanks-card">
-
-                        <div class="thanks-icon">
-                            👑
-                        </div>
-
-                        <h3>
-                            Vì mẹ là người tuyệt vời nhất
-                        </h3>
-
+                        <div class="thanks-icon">👑</div>
+                        <h3>Vì mẹ là người tuyệt vời nhất</h3>
                     </div>
-
-
                 </div>
-
             </div>
-
         </section>
 
 
-        <!-- =================================================
-             PAGE 5
-        ================================================== -->
-
+        <!-- PAGE 5 -->
         <section class="page">
-
             <div class="container promise">
-
-
                 <div class="night">
-
                     <div class="star-field"></div>
-
                     <div class="moon"></div>
-
                     <div class="city"></div>
-
                 </div>
-
 
                 <div class="promise-copy">
-
-                    <div class="badge">
-                        🌙 Một lời hứa
-                    </div>
-
-
+                    <div class="badge">🌙 Một lời hứa</div>
                     <h2>
-
                         Lời hứa
-
-                        <span class="script">
-                            của con
-                        </span>
-
+                        <span class="script">của con</span>
                     </h2>
-
-
                     <p class="subtitle">
-
-                        Con biết mình chưa phải
-                        là người con hoàn hảo.
-
+                        Con biết mình chưa phải là người con hoàn hảo.
                         <br><br>
-
-                        Nhưng con sẽ cố gắng
-                        từng ngày để trở thành
-                        người mà mẹ có thể tự hào.
-
+                        Nhưng con sẽ cố gắng từng ngày để trở thành người mà mẹ có thể tự hào.
                     </p>
 
-
                     <ul class="promise-list">
-
-                        <li>
-                            Con sẽ cố gắng học tập và trưởng thành.
-                        </li>
-
-                        <li>
-                            Con sẽ trả mạ 1 tỷ.
-                        </li>
-
-                        <li>
-                            Con sẽ nhớ những gì mẹ đã dạy.
-                        </li>
-
-                        <li>
-                            Con sẽ cố gắng trở thành tỉ phú nuôi mẹ.
-                        </li>
-
-                        <li>
-                            Và con sẽ luôn yêu thương mẹ.
-                        </li>
-
+                        <li>Con sẽ cố gắng học tập và trưởng thành.</li>
+                        <li>Con sẽ trả mạ 1 tỷ.</li>
+                        <li>Con sẽ nhớ những gì mẹ đã dạy.</li>
+                        <li>Con sẽ cố gắng trở thành tỉ phú nuôi mẹ.</li>
+                        <li>Và con sẽ luôn yêu thương mẹ.</li>
                     </ul>
-
                 </div>
-
             </div>
-
         </section>
 
 
-        <!-- =================================================
-             PAGE 6
-        ================================================== -->
-
+        <!-- PAGE 6 -->
         <section class="page">
-
             <div class="container gallery">
-
-                <div class="badge">
-                    📷 Góc nhỏ của mẫu tử
-                </div>
-
-
+                <div class="badge">📷 Góc nhỏ của mẫu tử</div>
                 <h1 class="title">
-
                     Những hình ảnh
-
-                    <span class="script">
-                        yêu thương
-                    </span>
-
+                    <span class="script">yêu thương</span>
                 </h1>
-
-
-                <p
-                    class="subtitle"
-                    style="
-                    margin-left:auto;
-                    margin-right:auto;
-                    "
-                >
-
-                    Những bức ảnh nhỏ,
-                    những khoảnh khắc nhỏ,
-                    nhưng lại chứa cả một khoảng trời
-                    ký ức.
-
+                <p class="subtitle" style="margin-left:auto; margin-right:auto;">
+                    Những bức ảnh nhỏ, những khoảnh khắc nhỏ, nhưng lại chứa cả một khoảng trời ký ức.
                 </p>
-
 
                 <div class="gallery-grid">
-
                     <div class="gallery-img g1"></div>
-
                     <div class="gallery-img g2"></div>
-
                     <div class="gallery-img g3"></div>
-
                     <div class="gallery-img g4"></div>
-
                 </div>
 
-
-                <button
-                    class="btn"
-                    onclick="goTo(6)"
-                >
-                    Đến điều cuối cùng... ❤️
-                </button>
-
+                <button class="btn" onclick="goTo(6)">Đến điều cuối cùng... ❤️</button>
             </div>
-
         </section>
 
 
-        <!-- =================================================
-             PAGE 7
-        ================================================== -->
-
+        <!-- PAGE 7 -->
         <section class="page">
-
             <div class="container final">
-
-                <div class="final-bouquet">
-                    💐
-                </div>
-
-
-                <div class="badge">
-                    ❤️ Dành riêng cho mẹ
-                </div>
-
-
-                <h1 class="final-title">
-                    Happy 20-10
-                </h1>
-
-
+                <div class="final-bouquet">💐</div>
+                <div class="badge">❤️ Dành riêng cho mẹ</div>
+                <h1 class="final-title">Happy 20-10</h1>
                 <p class="final-subtitle">
-
-                    Chúc mẹ luôn giàu
-                   nhiều tiền đi ăn ốc
-                   mau cao lên nhất nhà.
-
+                    Chúc mẹ luôn giàu nhiều tiền đi ăn ốc mau cao lên nhất nhà.
                 </p>
+                <div class="final-love">Con yêu mẹ rất nhiều ❤️</div>
 
-
-                <div class="final-love">
-
-                    Con yêu mẹ rất nhiều ❤️
-
-                </div>
-
-
-                <button
-                    class="btn"
-                    onclick="finalCelebration()"
-                >
-
-                    Gửi mẹ một cái ôm 🤗
-
-                </button>
-
+                <button class="btn" onclick="finalCelebration()">Gửi mẹ một cái ôm 🤗</button>
             </div>
-
         </section>
-
 
     </div>
 
-
-    <!-- =====================================================
-         DESKTOP CONTROLS
-    ====================================================== -->
 
     <div class="desktop-controls">
-
-        <button
-            class="circle-arrow"
-            onclick="previousPage()"
-        >
-            ←
-        </button>
-
-        <button
-            class="circle-arrow"
-            onclick="nextPage()"
-        >
-            →
-        </button>
-
+        <button class="circle-arrow" onclick="previousPage()">←</button>
+        <button class="circle-arrow" onclick="nextPage()">→</button>
     </div>
-
-
-    <!-- =====================================================
-         MOBILE BACK / NEXT
-    ====================================================== -->
 
     <div class="mobile-controls">
-
-        <button
-            class="mobile-nav-btn"
-            onclick="previousPage()"
-        >
-
-            <span class="arrow-icon">
-                ←
-            </span>
-
-            BACK
-
+        <button class="mobile-nav-btn" onclick="previousPage()">
+            <span class="arrow-icon">←</span> BACK
         </button>
-
-
-        <button
-            class="mobile-nav-btn"
-            onclick="nextPage()"
-        >
-
-            NEXT
-
-            <span class="arrow-icon">
-                →
-            </span>
-
+        <button class="mobile-nav-btn" onclick="nextPage()">
+            NEXT <span class="arrow-icon">→</span>
         </button>
-
     </div>
-
 
     <div class="page-number">
-
-        <span id="pageNumber">
-            1
-        </span>
-
-        / 7
-
+        <span id="pageNumber">1</span> / 7
     </div>
-
 
 </div>
 
 
-<!-- =========================================================
-     POPUP
-========================================================= -->
-
-<div
-    class="popup"
-    id="popup"
->
-
+<div class="popup" id="popup">
     <div class="popup-box">
-
-        <div class="popup-heart">
-            ❤️
-        </div>
-
-
-        <h2>
-            Mẹ ơi...
-        </h2>
-
-
+        <div class="popup-heart">❤️</div>
+        <h2>Mẹ ơi...</h2>
         <p>
-
-            Có thể Bảo không thường xuyên
-            nói điều này.
-
+            Có thể Bảo không thường xuyên nói điều này.
             <br><br>
-
             Nhưng mẹ hãy luôn nhớ rằng:
-
             <br><br>
-
-            <strong>
-                Mẹ là người Bảo yêu thương,
-                biết ơn và trân trọng nhất.
-            </strong>
-
+            <strong>Mẹ là người Bảo yêu thương, biết ơn và trân trọng nhất.</strong>
             <br><br>
-
             Cảm ơn mẹ vì đã ỉa ra con.
-
         </p>
-
-
-        <button
-            class="btn"
-            onclick="closePopup()"
-        >
-            Con yêu mẹ ❤️
-        </button>
-
+        <button class="btn" onclick="closePopup()">Con yêu mẹ ❤️</button>
     </div>
-
 </div>
 
 
 <script>
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-const pages =
-    document.querySelectorAll(".page");
-
-const navButtons =
-    document.querySelectorAll(
-        ".nav-menu button"
-    );
-
-const pageNumber =
-    document.getElementById(
-        "pageNumber"
-    );
-
-const progress =
-    document.getElementById(
-        "progress"
-    );
-
-const main =
-    document.getElementById(
-        "main"
-    );
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll(".nav-menu button");
+const pageNumber = document.getElementById("pageNumber");
+const progress = document.getElementById("progress");
+const main = document.getElementById("main");
 
 let currentPage = 0;
 
 
-/* =========================================================
-   LOADING
-========================================================= */
-
-window.addEventListener(
-    "load",
-    () => {
-
-        setTimeout(
-            () => {
-
-                const loading =
-                    document.getElementById(
-                        "loading"
-                    );
-
-                loading.style.opacity =
-                    "0";
-
-                setTimeout(
-                    () => {
-
-                        loading.style.display =
-                            "none";
-
-                    },
-                    1200
-                );
-
-            },
-            2000
-        );
-
-    }
-);
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        const loading = document.getElementById("loading");
+        loading.style.opacity = "0";
+        setTimeout(() => {
+            loading.style.display = "none";
+        }, 1200);
+    }, 2000);
+});
 
 
-/* =========================================================
-   ENVELOPE OPENING
-========================================================= */
+const envelope = document.getElementById("envelope");
+const intro = document.getElementById("intro");
 
-const envelope =
-    document.getElementById(
-        "envelope"
-    );
+envelope.addEventListener("click", () => {
+    if(envelope.classList.contains("open")) return;
 
-const intro =
-    document.getElementById(
-        "intro"
-    );
+    envelope.classList.add("open");
+    createParticles(15);
 
+    setTimeout(() => {
+        intro.style.opacity = "0";
+        intro.style.transform = "scale(1.04)";
+        setTimeout(() => {
+            intro.style.display = "none";
+            main.classList.add("show");
+            startParticles();
+        }, 1000);
+    }, 1700);
+});
 
-envelope.addEventListener(
-    "click",
-    () => {
-
-        if(
-            envelope.classList.contains(
-                "open"
-            )
-        ){
-            return;
-        }
-
-
-        envelope.classList.add(
-            "open"
-        );
-
-
-        createParticles(15);
-
-
-        setTimeout(
-            () => {
-
-                intro.style.opacity =
-                    "0";
-
-                intro.style.transform =
-                    "scale(1.04)";
-
-
-                setTimeout(
-                    () => {
-
-                        intro.style.display =
-                            "none";
-
-                        main.classList.add(
-                            "show"
-                        );
-
-                        startParticles();
-
-                    },
-                    1000
-                );
-
-            },
-            1700
-        );
-
-    }
-);
-
-
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
 
 function goTo(index){
+    // Chặn không cho vòng lại trang đầu/cuối
+    if(index < 0 || index >= pages.length) return;
+    if(index === currentPage) return;
 
-    /* Không còn wrap-around: ở trang đầu bấm prev, ở trang
-       cuối bấm next đều không làm gì cả */
+    const oldPage = currentPage;
+    pages[oldPage].classList.remove("active");
+    pages[oldPage].classList.add("prev");
+    currentPage = index;
 
-    if(index < 0 || index >= pages.length){
+    pages[currentPage].classList.add("active");
 
-        return;
+    setTimeout(() => {
+        pages[oldPage].classList.remove("prev");
+    }, 900);
 
-    }
+    pageNumber.innerText = currentPage + 1;
+    progress.style.width = ((currentPage + 1) / pages.length * 100) + "%";
 
-    if(index === currentPage){
-
-        return;
-
-    }
-
-
-    const oldPage =
-        currentPage;
-
-
-    pages[oldPage]
-        .classList
-        .remove("active");
-
-
-    pages[oldPage]
-        .classList
-        .add("prev");
-
-
-    currentPage =
-        index;
-
-
-    pages[currentPage]
-        .classList
-        .add("active");
-
-
-    setTimeout(
-        () => {
-
-            pages[oldPage]
-                .classList
-                .remove("prev");
-
-        },
-        900
-    );
-
-
-    pageNumber.innerText =
-        currentPage + 1;
-
-
-    progress.style.width =
-        (
-            (currentPage + 1)
-            /
-            pages.length
-            *
-            100
-        ) + "%";
-
-
-    navButtons.forEach(
-        (button,index) => {
-
-            button.classList.toggle(
-                "active",
-                index === currentPage
-            );
-
-        }
-    );
-
+    navButtons.forEach((button, index) => {
+        button.classList.toggle("active", index === currentPage);
+    });
 
     createParticles(6);
-
 }
 
-
-function nextPage(){
-
-    goTo(
-        currentPage + 1
-    );
-
-}
+function nextPage(){ goTo(currentPage + 1); }
+function previousPage(){ goTo(currentPage - 1); }
 
 
-function previousPage(){
-
-    goTo(
-        currentPage - 1
-    );
-
-}
+document.addEventListener("keydown", event => {
+    if(event.key === "ArrowRight") nextPage();
+    if(event.key === "ArrowLeft") previousPage();
+});
 
 
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key ===
-            "ArrowRight"
-        ){
-
-            nextPage();
-
-        }
-
-        if(
-            event.key ===
-            "ArrowLeft"
-        ){
-
-            previousPage();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
-const particleTypes = [
-
-    "❤️",
-    "♡",
-    "🌸",
-    "🌷",
-    "✿",
-    "✨"
-
-];
-
+const particleTypes = ["❤️", "♡", "🌸", "🌷", "✿", "✨"];
 
 function createParticle(){
+    const particle = document.createElement("div");
+    particle.className = "particle";
+    particle.innerText = particleTypes[Math.floor(Math.random() * particleTypes.length)];
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.fontSize = (10 + Math.random() * 20) + "px";
+    particle.style.animationDuration = (5 + Math.random() * 8) + "s";
+    particle.style.animationDelay = (Math.random() * 1.5) + "s";
 
-    const particle =
-        document.createElement(
-            "div"
-        );
+    document.body.appendChild(particle);
 
-
-    particle.className =
-        "particle";
-
-
-    particle.innerText =
-        particleTypes[
-            Math.floor(
-                Math.random()
-                *
-                particleTypes.length
-            )
-        ];
-
-
-    particle.style.left =
-        Math.random() * 100 +
-        "vw";
-
-
-    particle.style.fontSize =
-        (
-            10 +
-            Math.random() * 20
-        ) + "px";
-
-
-    particle.style.animationDuration =
-        (
-            5 +
-            Math.random() * 8
-        ) + "s";
-
-
-    particle.style.animationDelay =
-        (
-            Math.random() * 1.5
-        ) + "s";
-
-
-    document.body.appendChild(
-        particle
-    );
-
-
-    setTimeout(
-        () => {
-
-            particle.remove();
-
-        },
-        15000
-    );
-
+    setTimeout(() => {
+        particle.remove();
+    }, 15000);
 }
 
-
-function createParticles(
-    amount
-){
-
-    for(
-        let i=0;
-        i<amount;
-        i++
-    ){
-
-        setTimeout(
-            () => {
-
-                createParticle();
-
-            },
-            i * 80
-        );
-
+function createParticles(amount){
+    for(let i=0; i<amount; i++){
+        setTimeout(() => { createParticle(); }, i * 80);
     }
-
 }
-
 
 function startParticles(){
-
     createParticles(20);
-
-
-    setInterval(
-        () => {
-
-            createParticle();
-
-        },
-        750
-    );
-
+    setInterval(() => { createParticle(); }, 750);
 }
 
-
-/* =========================================================
-   POPUP
-========================================================= */
 
 function showPopup(){
-
-    document
-        .getElementById(
-            "popup"
-        )
-        .classList
-        .add("show");
-
-
+    document.getElementById("popup").classList.add("show");
     createParticles(20);
-
 }
-
 
 function closePopup(){
-
-    document
-        .getElementById(
-            "popup"
-        )
-        .classList
-        .remove("show");
-
+    document.getElementById("popup").classList.remove("show");
 }
 
 
-/* =========================================================
-   CURSOR
-========================================================= */
+const cursor = document.getElementById("cursor");
+const cursorDot = document.getElementById("cursorDot");
 
-const cursor =
-    document.getElementById(
-        "cursor"
-    );
+document.addEventListener("mousemove", event => {
+    cursor.style.left = event.clientX + "px";
+    cursor.style.top = event.clientY + "px";
+    cursorDot.style.left = event.clientX + "px";
+    cursorDot.style.top = event.clientY + "px";
+});
 
-const cursorDot =
-    document.getElementById(
-        "cursorDot"
-    );
+document.querySelectorAll("button,.envelope").forEach(element => {
+    element.addEventListener("mouseenter", () => {
+        cursor.style.width = "42px";
+        cursor.style.height = "42px";
+        cursor.style.background = "rgba(223,102,136,.08)";
+    });
 
+    element.addEventListener("mouseleave", () => {
+        cursor.style.width = "24px";
+        cursor.style.height = "24px";
+        cursor.style.background = "transparent";
+    });
+});
 
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        cursor.style.left =
-            event.clientX + "px";
-
-        cursor.style.top =
-            event.clientY + "px";
-
-
-        cursorDot.style.left =
-            event.clientX + "px";
-
-        cursorDot.style.top =
-            event.clientY + "px";
-
-    }
-);
-
-
-/* =========================================================
-   CURSOR HOVER
-========================================================= */
-
-document
-    .querySelectorAll(
-        "button,.envelope"
-    )
-    .forEach(
-        element => {
-
-            element.addEventListener(
-                "mouseenter",
-                () => {
-
-                    cursor.style.width =
-                        "42px";
-
-                    cursor.style.height =
-                        "42px";
-
-                    cursor.style.background =
-                        "rgba(223,102,136,.08)";
-
-                }
-            );
-
-
-            element.addEventListener(
-                "mouseleave",
-                () => {
-
-                    cursor.style.width =
-                        "24px";
-
-                    cursor.style.height =
-                        "24px";
-
-                    cursor.style.background =
-                        "transparent";
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   FINAL CELEBRATION
-========================================================= */
 
 function finalCelebration(){
-
     createParticles(100);
-
     fireworks();
-
-
-    setTimeout(
-        () => {
-
-            createParticles(100);
-
-        },
-        700
-    );
-
-
-    setTimeout(
-        () => {
-
-            createParticles(100);
-
-        },
-        1400
-    );
-
+    setTimeout(() => { createParticles(100); }, 700);
+    setTimeout(() => { createParticles(100); }, 1400);
 }
 
-
-/* =========================================================
-   FIREWORKS
-========================================================= */
 
 function fireworks(){
-
-    for(
-        let i=0;
-        i<10;
-        i++
-    ){
-
-        setTimeout(
-            () => {
-
-                createFirework();
-
-            },
-            i * 230
-        );
-
+    for(let i=0; i<10; i++){
+        setTimeout(() => { createFirework(); }, i * 230);
     }
-
 }
 
-
 function createFirework(){
+    const x = 15 + Math.random() * 70;
+    const y = 15 + Math.random() * 55;
+    const firework = document.createElement("div");
+    firework.className = "firework";
+    firework.style.left = x + "vw";
+    firework.style.top = y + "vh";
+    document.body.appendChild(firework);
 
-    const x =
-        15 +
-        Math.random() * 70;
+    const colors = ["#ff668f", "#ffbd6b", "#ffffff", "#d9a4ff", "#ff8ec2"];
 
-    const y =
-        15 +
-        Math.random() * 55;
+    for(let i=0; i<35; i++){
+        const spark = document.createElement("div");
+        spark.className = "spark";
+        spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+        firework.appendChild(spark);
 
-
-    const firework =
-        document.createElement(
-            "div"
-        );
-
-
-    firework.className =
-        "firework";
-
-
-    firework.style.left =
-        x + "vw";
-
-    firework.style.top =
-        y + "vh";
-
-
-    document.body.appendChild(
-        firework
-    );
-
-
-    const colors = [
-
-        "#ff668f",
-        "#ffbd6b",
-        "#ffffff",
-        "#d9a4ff",
-        "#ff8ec2"
-
-    ];
-
-
-    for(
-        let i=0;
-        i<35;
-        i++
-    ){
-
-        const spark =
-            document.createElement(
-                "div"
-            );
-
-
-        spark.className =
-            "spark";
-
-
-        spark.style.background =
-            colors[
-                Math.floor(
-                    Math.random()
-                    *
-                    colors.length
-                )
-            ];
-
-
-        firework.appendChild(
-            spark
-        );
-
-
-        const angle =
-            Math.random()
-            *
-            Math.PI
-            *
-            2;
-
-
-        const distance =
-            60 +
-            Math.random() * 130;
-
-
-        const dx =
-            Math.cos(angle)
-            *
-            distance;
-
-
-        const dy =
-            Math.sin(angle)
-            *
-            distance;
-
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 60 + Math.random() * 130;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
 
         spark.animate(
             [
-                {
-                    transform:
-                        "translate(0,0) scale(1)",
-                    opacity:1
-                },
-
-                {
-                    transform:
-                        `translate(${dx}px,${dy}px) scale(0)`,
-                    opacity:0
-                }
+                { transform: "translate(0,0) scale(1)", opacity: 1 },
+                { transform: `translate(${dx}px,${dy}px) scale(0)`, opacity: 0 }
             ],
-            {
-                duration:
-                    900 +
-                    Math.random() * 500,
-
-                easing:
-                    "cubic-bezier(.2,.8,.3,1)"
-            }
+            { duration: 900 + Math.random() * 500, easing: "cubic-bezier(.2,.8,.3,1)" }
         );
-
     }
 
-
-    setTimeout(
-        () => {
-
-            firework.remove();
-
-        },
-        1600
-    );
-
+    setTimeout(() => { firework.remove(); }, 1600);
 }
 
 
-/* =========================================================
-   DOUBLE CLICK HEART
-========================================================= */
+document.addEventListener("dblclick", event => {
+    const heart = document.createElement("div");
+    heart.innerText = "❤️";
+    heart.style.position = "fixed";
+    heart.style.left = event.clientX + "px";
+    heart.style.top = event.clientY + "px";
+    heart.style.fontSize = "35px";
+    heart.style.zIndex = "9999";
+    heart.style.pointerEvents = "none";
+    document.body.appendChild(heart);
 
-document.addEventListener(
-    "dblclick",
-    event => {
-
-        const heart =
-            document.createElement(
-                "div"
-            );
-
-
-        heart.innerText =
-            "❤️";
-
-
-        heart.style.position =
-            "fixed";
-
-
-        heart.style.left =
-            event.clientX + "px";
+    heart.animate(
+        [
+            { transform: "translate(-50%,-50%) scale(.5)", opacity: 0 },
+            { transform: "translate(-50%,-100px) scale(1.3)", opacity: 1 },
+            { transform: "translate(-50%,-180px) scale(1)", opacity: 0 }
+        ],
+        { duration: 1200, easing: "ease-out" }
+    ).onfinish = () => { heart.remove(); };
+});
 
 
-        heart.style.top =
-            event.clientY + "px";
-
-
-        heart.style.fontSize =
-            "35px";
-
-
-        heart.style.zIndex =
-            "9999";
-
-
-        heart.style.pointerEvents =
-            "none";
-
-
-        document.body.appendChild(
-            heart
-        );
-
-
-        heart.animate(
-            [
-                {
-                    transform:
-                        "translate(-50%,-50%) scale(.5)",
-                    opacity:0
-                },
-
-                {
-                    transform:
-                        "translate(-50%,-100px) scale(1.3)",
-                    opacity:1
-                },
-
-                {
-                    transform:
-                        "translate(-50%,-180px) scale(1)",
-                    opacity:0
-                }
-            ],
-            {
-                duration:1200,
-                easing:"ease-out"
-            }
-        ).onfinish =
-            () => {
-
-                heart.remove();
-
-            };
-
-    }
-);
-
-
-/* =========================================================
-   INITIAL PARTICLES
-========================================================= */
-
-setTimeout(
-    () => {
-
-        createParticles(10);
-
-    },
-    2800
-);
+setTimeout(() => { createParticles(10); }, 2800);
 
 </script>
 

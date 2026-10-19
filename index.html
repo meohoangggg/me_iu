@@ -1,0 +1,4180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gửi Mẹ — 20/10 ❤️</title>
+
+<!-- FONT NHẸ NHÀNG HƠN -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --pink:#df6688;
+    --pink-dark:#bd4d70;
+    --pink-light:#f7b5c5;
+
+    --cream:#fffaf7;
+    --cream2:#fff2f5;
+
+    --text:#533544;
+    --text-light:#80616d;
+
+    --white:#ffffff;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    color:var(--text);
+    background:var(--cream);
+}
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor{
+    position:fixed;
+    width:24px;
+    height:24px;
+
+    border:1px solid rgba(223,102,136,.65);
+    border-radius:50%;
+
+    pointer-events:none;
+    z-index:100000;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .25s ease,
+        height .25s ease,
+        background .25s ease;
+}
+
+.cursor-dot{
+    position:fixed;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+    background:var(--pink);
+
+    pointer-events:none;
+    z-index:100001;
+
+    transform:translate(-50%,-50%);
+}
+
+@media(max-width:700px){
+
+    .cursor,
+    .cursor-dot{
+        display:none;
+    }
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+#loading{
+    position:fixed;
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #ffffff 0%,
+            #fff3f6 45%,
+            #fbdde7 100%
+        );
+
+    transition:1.2s ease;
+}
+
+.loader-heart{
+    font-size:64px;
+
+    animation:
+        heartbeat 1.3s infinite ease-in-out,
+        floating 3s infinite ease-in-out;
+}
+
+.loader-text{
+    margin-top:22px;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    font-weight:500;
+
+    color:#9e536b;
+}
+
+.loader-line{
+    width:180px;
+    height:2px;
+
+    margin-top:20px;
+
+    background:#efd1d9;
+
+    overflow:hidden;
+}
+
+.loader-line span{
+    display:block;
+
+    height:100%;
+    width:0;
+
+    background:var(--pink);
+
+    animation:
+        loadingLine 2s forwards;
+}
+
+@keyframes loadingLine{
+
+    to{
+        width:100%;
+    }
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+
+    z-index:9990;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #ffffff,
+            #fff3f6 55%,
+            #f9dce6
+        );
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.intro-content{
+    text-align:center;
+}
+
+.intro-small{
+    margin-bottom:28px;
+
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+
+    color:#a36b7b;
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope{
+    width:360px;
+    height:240px;
+
+    position:relative;
+
+    margin:auto;
+
+    cursor:pointer;
+
+    perspective:1200px;
+
+    filter:
+        drop-shadow(
+            0 30px 45px
+            rgba(100,35,55,.16)
+        );
+}
+
+
+/* BACK */
+
+.envelope-back{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7b0c1,
+            #df708f
+        );
+
+    border-radius:8px;
+
+    z-index:1;
+}
+
+
+/* LETTER */
+
+.letter-inside{
+
+    position:absolute;
+
+    left:30px;
+    right:30px;
+
+    bottom:22px;
+
+    height:175px;
+
+    padding:25px 20px;
+
+    background:#fffdfa;
+
+    border-radius:4px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(70,25,40,.08);
+
+    z-index:2;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        transform 1s
+        cubic-bezier(.22,.8,.2,1);
+
+}
+
+.letter-inside h2{
+
+    font-family:"Allura",cursive;
+
+    font-size:42px;
+    font-weight:400;
+
+    color:#c95575;
+}
+
+.letter-inside p{
+
+    margin-top:3px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:18px;
+
+    color:#805565;
+}
+
+
+/* SIDE TRIANGLES */
+
+.envelope-left{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:180px solid #f0a0b6;
+    border-top:120px solid transparent;
+    border-bottom:120px solid transparent;
+
+    z-index:5;
+}
+
+.envelope-right{
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-right:180px solid #e88ba5;
+    border-top:120px solid transparent;
+    border-bottom:120px solid transparent;
+
+    z-index:5;
+}
+
+
+/* BOTTOM */
+
+.envelope-bottom{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:180px solid transparent;
+    border-right:180px solid transparent;
+    border-bottom:135px solid #e27798;
+
+    z-index:6;
+}
+
+
+/* FLAP */
+
+.envelope-flap{
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:0;
+    height:0;
+
+    border-left:180px solid transparent;
+    border-right:180px solid transparent;
+    border-top:135px solid #ffc0cf;
+
+    transform-origin:top center;
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+
+    z-index:10;
+
+    filter:
+        drop-shadow(
+            0 4px 3px
+            rgba(80,25,40,.08)
+        );
+}
+
+
+.envelope.open .letter-inside{
+
+    transform:
+        translateY(-110px);
+
+    transition-delay:.15s;
+}
+
+.envelope.open .envelope-flap{
+
+    transform:
+        rotateX(180deg);
+
+    transition-delay:.3s;
+
+    z-index:1;
+}
+
+
+.envelope.open{
+
+    transform:
+        translateY(20px);
+
+    transition:
+        transform 1s ease;
+}
+
+
+.intro-hint{
+
+    margin-top:48px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:22px;
+
+    color:#b14e6c;
+
+    animation:
+        hintPulse 2s infinite;
+}
+
+@keyframes hintPulse{
+
+    0%,100%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.45;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#main{
+
+    position:fixed;
+    inset:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1s ease;
+}
+
+#main.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(255,178,198,.25),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(255,214,166,.25),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffaf8,
+            #fff1f5
+        );
+}
+
+.glow{
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.3;
+}
+
+.glow.one{
+
+    background:#ff9db8;
+
+    top:-150px;
+    left:-100px;
+
+    animation:
+        glowMove 12s
+        infinite alternate;
+}
+
+.glow.two{
+
+    background:#ffd27e;
+
+    right:-150px;
+    bottom:-120px;
+
+    animation:
+        glowMove 14s
+        infinite alternate-reverse;
+}
+
+.glow.three{
+
+    background:#c3b0ff;
+
+    left:45%;
+    top:35%;
+
+    animation:
+        glowMove 18s
+        infinite alternate;
+}
+
+@keyframes glowMove{
+
+    to{
+        transform:
+            translate(100px,70px)
+            scale(1.25);
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle{
+
+    position:fixed;
+
+    top:-60px;
+
+    z-index:30;
+
+    pointer-events:none;
+
+    animation:
+        particleFall
+        linear
+        forwards;
+}
+
+@keyframes particleFall{
+
+    0%{
+        transform:
+            translateY(-60px)
+            translateX(0)
+            rotate(0deg)
+            scale(.5);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(60px)
+            rotate(200deg)
+            scale(1);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(-70px)
+            rotate(600deg)
+            scale(.7);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    padding:0 5%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:100;
+
+    background:
+        rgba(255,255,255,.52);
+
+    backdrop-filter:
+        blur(20px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.7);
+}
+
+.logo{
+
+    font-family:"Allura",cursive;
+
+    font-size:34px;
+
+    color:#bd4d70;
+}
+
+.logo span{
+
+    font-family:"DM Sans",sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-left:5px;
+
+    color:#9e6878;
+}
+
+.nav-menu{
+
+    display:flex;
+
+    gap:25px;
+}
+
+.nav-menu button{
+
+    border:0;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-family:"DM Sans",sans-serif;
+
+    color:#724b5b;
+
+    font-size:13px;
+
+    position:relative;
+
+    transition:.3s;
+}
+
+.nav-menu button:after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:var(--pink);
+
+    transition:.3s;
+}
+
+.nav-menu button:hover,
+.nav-menu button.active{
+
+    color:var(--pink-dark);
+}
+
+.nav-menu button:hover:after,
+.nav-menu button.active:after{
+
+    width:100%;
+}
+
+.progress{
+
+    position:absolute;
+
+    left:0;
+    bottom:-1px;
+
+    height:2px;
+
+    width:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #df6688,
+            #f4a0b6
+        );
+
+    transition:.7s;
+}
+
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+.pages{
+
+    position:absolute;
+    inset:0;
+}
+
+.page{
+
+    position:absolute;
+
+    inset:0;
+
+    padding:
+        100px
+        7%
+        105px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:
+        translateX(70px)
+        scale(.97);
+
+    transition:
+        opacity .75s ease,
+        transform .85s
+        cubic-bezier(.22,.7,.2,1),
+        visibility .75s;
+}
+
+.page.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translateX(0)
+        scale(1);
+}
+
+.page.prev{
+
+    transform:
+        translateX(-70px)
+        scale(.97);
+}
+
+.container{
+
+    width:min(1150px,100%);
+
+    margin:auto;
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 17px;
+
+    border-radius:50px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    border:
+        1px solid
+        rgba(220,90,125,.12);
+
+    color:#c55372;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    box-shadow:
+        0 10px 30px
+        rgba(100,30,50,.06);
+}
+
+.title{
+
+    margin-top:18px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(52px,7vw,88px);
+
+    font-weight:500;
+
+    line-height:.98;
+
+    color:#51303e;
+}
+
+.script{
+
+    font-family:
+        "Allura",
+        cursive;
+
+    color:#dc587a;
+
+    font-weight:400;
+}
+
+.subtitle{
+
+    max-width:650px;
+
+    margin-top:25px;
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:#765765;
+}
+
+.btn{
+
+    margin-top:30px;
+
+    padding:
+        14px
+        27px;
+
+    border:0;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d95d7e,
+            #ef91aa
+        );
+
+    box-shadow:
+        0 14px 35px
+        rgba(210,75,110,.2);
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(210,75,110,.3);
+}
+
+
+/* =========================================================
+   PAGE 1
+========================================================= */
+
+.hero{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    align-items:center;
+
+    gap:70px;
+}
+
+.hero-copy{
+
+    animation:
+        heroIn
+        1s
+        both;
+}
+
+.hero-copy .title{
+
+    animation:
+        titleIn
+        1s
+        .15s
+        both;
+}
+
+.hero-copy .subtitle{
+
+    animation:
+        titleIn
+        1s
+        .3s
+        both;
+}
+
+.hero-copy .btn{
+
+    animation:
+        titleIn
+        1s
+        .45s
+        both;
+}
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+@keyframes titleIn{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+.hero-visual{
+
+    height:530px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.main-photo{
+
+    width:360px;
+    height:470px;
+
+    padding:11px;
+
+    background:#fff;
+
+    border-radius:
+        210px
+        210px
+        30px
+        30px;
+
+    box-shadow:
+        0 35px 80px
+        rgba(75,30,50,.17);
+
+    transform:rotate(3deg);
+
+    animation:
+        photoIn
+        1.2s
+        .15s
+        both;
+}
+
+.photo{
+
+    width:100%;
+    height:100%;
+
+    border-radius:
+        200px
+        200px
+        22px
+        22px;
+
+    background:
+        url("./me.jpg")
+        center/cover;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.photo:after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 55%,
+            rgba(55,20,35,.48)
+        );
+}
+
+.photo-caption{
+
+    position:absolute;
+
+    left:20px;
+    right:20px;
+    bottom:25px;
+
+    z-index:2;
+
+    text-align:center;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size:32px;
+
+    color:#fff;
+}
+
+.decor{
+
+    position:absolute;
+
+    font-size:50px;
+
+    animation:
+        floating
+        4s
+        infinite
+        ease-in-out;
+}
+
+.decor.a{
+    left:0;
+    top:30px;
+}
+
+.decor.b{
+    right:0;
+    bottom:30px;
+    animation-delay:1s;
+}
+
+.decor.c{
+    right:20px;
+    top:25px;
+
+    font-size:35px;
+
+    animation-delay:2s;
+}
+
+@keyframes photoIn{
+
+    from{
+        opacity:0;
+        transform:
+            scale(.75)
+            rotate(-8deg);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            scale(1)
+            rotate(3deg);
+    }
+
+}
+
+@keyframes floating{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-4deg);
+    }
+
+    50%{
+        transform:
+            translateY(-18px)
+            rotate(6deg);
+    }
+
+}
+
+
+/* =========================================================
+   PAGE 2
+========================================================= */
+
+.letter{
+
+    text-align:center;
+
+    max-width:900px;
+}
+
+.letter-paper{
+
+    position:relative;
+
+    max-width:830px;
+
+    min-height:390px;
+
+    margin:
+        30px
+        auto
+        0;
+
+    padding:
+        45px
+        60px;
+
+    background:
+        #fffdf9;
+
+    border-radius:5px;
+
+    box-shadow:
+        0 30px 70px
+        rgba(80,35,50,.13);
+
+    transform:rotate(-.5deg);
+}
+
+.letter-paper:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:15px;
+
+    border:
+        1px solid
+        #efd0d8;
+}
+
+.letter-text{
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:23px;
+
+    line-height:1.55;
+
+    color:#684050;
+}
+
+.letter-text strong{
+
+    color:#d45475;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   PAGE 3
+========================================================= */
+
+.memories{
+
+    text-align:center;
+}
+
+.memory-grid{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:27px;
+}
+
+.polaroid{
+
+    padding:
+        11px
+        11px
+        20px;
+
+    background:#fff;
+
+    box-shadow:
+        0 20px 45px
+        rgba(60,25,40,.12);
+
+    transition:.45s;
+}
+
+.polaroid:nth-child(1){
+
+    transform:
+        rotate(-4deg);
+}
+
+.polaroid:nth-child(2){
+
+    transform:
+        rotate(2deg)
+        translateY(8px);
+}
+
+.polaroid:nth-child(3){
+
+    transform:
+        rotate(-2deg);
+}
+
+.polaroid:hover{
+
+    transform:
+        translateY(-16px)
+        rotate(0)
+        scale(1.03);
+
+    z-index:5;
+}
+
+.polaroid-img{
+
+    height:255px;
+
+    background-size:cover;
+
+    background-position:center;
+}
+
+.p1{
+    background-image:
+        url("./photo1.jpg");
+}
+
+.p2{
+    background-image:
+        url("./photo2.jpg");
+}
+
+.p3{
+    background-image:
+        url("./photo3.jpg");
+}
+
+.polaroid-caption{
+
+    margin-top:14px;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size:27px;
+
+    color:#6c3e50;
+}
+
+
+/* =========================================================
+   PAGE 4
+========================================================= */
+
+.thanks{
+
+    text-align:center;
+}
+
+.thanks-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+
+    margin-top:32px;
+}
+
+.thanks-card{
+
+    min-height:140px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:15px;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.72);
+
+    border:
+        1px solid
+        rgba(220,90,125,.1);
+
+    transition:.4s;
+}
+
+.thanks-card:hover{
+
+    transform:
+        translateY(-8px);
+
+    background:#fff;
+
+    box-shadow:
+        0 20px 45px
+        rgba(180,50,90,.1);
+}
+
+.thanks-icon{
+
+    font-size:33px;
+
+    margin-bottom:10px;
+}
+
+.thanks-card h3{
+
+    font-size:14px;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   PAGE 5
+========================================================= */
+
+.promise{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:65px;
+
+    align-items:center;
+}
+
+.night{
+
+    height:490px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #15182f,
+            #29234c 55%,
+            #61395f
+        );
+
+    box-shadow:
+        0 30px 75px
+        rgba(30,25,65,.2);
+}
+
+.star-field{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+        radial-gradient(
+            #fff 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            #fff 1px,
+            transparent 1px
+        );
+
+    background-size:
+        75px 75px,
+        130px 130px;
+
+    animation:
+        starsMove
+        16s
+        linear
+        infinite;
+
+    opacity:.75;
+}
+
+@keyframes starsMove{
+
+    to{
+        background-position:
+            100px 110px,
+            -100px 90px;
+    }
+
+}
+
+.moon{
+
+    position:absolute;
+
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    right:65px;
+    top:55px;
+
+    background:#fff3c1;
+
+    box-shadow:
+        0 0 30px #fff1b0,
+        0 0 75px
+        rgba(255,245,190,.45);
+}
+
+.city{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:155px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0d0e21 0 9%,
+            transparent 9% 12%,
+            #0d0e21 12% 23%,
+            transparent 23% 27%,
+            #0d0e21 27% 38%,
+            transparent 38% 42%,
+            #0d0e21 42% 57%,
+            transparent 57% 61%,
+            #0d0e21 61% 76%,
+            transparent 76% 80%,
+            #0d0e21 80%
+        );
+}
+
+.promise-copy h2{
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:60px;
+
+    font-weight:500;
+}
+
+.promise-list{
+
+    margin-top:23px;
+
+    list-style:none;
+}
+
+.promise-list li{
+
+    margin:11px 0;
+
+    color:#71505e;
+
+    font-size:14px;
+}
+
+.promise-list li:before{
+
+    content:"♡";
+
+    margin-right:10px;
+
+    color:#df6688;
+
+    font-size:20px;
+}
+
+
+/* =========================================================
+   PAGE 6
+========================================================= */
+
+.gallery{
+
+    text-align:center;
+}
+
+.gallery-grid{
+
+    margin-top:32px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.gallery-img{
+
+    height:185px;
+
+    border-radius:20px;
+
+    background-size:cover;
+
+    background-position:center;
+
+    transition:.45s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.gallery-img:after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(55,20,40,.4)
+        );
+
+    opacity:0;
+
+    transition:.4s;
+}
+
+.gallery-img:hover{
+
+    transform:
+        scale(1.05);
+}
+
+.gallery-img:hover:after{
+
+    opacity:1;
+}
+
+.g1{
+    background-image:
+        url("./me.jpg");
+}
+
+.g2{
+    background-image:
+        url("./photo1.jpg");
+}
+
+.g3{
+    background-image:
+        url("./photo2.jpg");
+}
+
+.g4{
+    background-image:
+        url("./photo3.jpg");
+}
+
+
+/* =========================================================
+   PAGE 7
+========================================================= */
+
+.final{
+
+    text-align:center;
+}
+
+.final-bouquet{
+
+    font-size:105px;
+
+    animation:
+        floating 4s
+        infinite ease-in-out;
+}
+
+.final-title{
+
+    margin-top:5px;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size:
+        clamp(75px,10vw,125px);
+
+    font-weight:400;
+
+    color:#d95778;
+
+    text-shadow:
+        0 15px 35px
+        rgba(210,50,100,.15);
+}
+
+.final-subtitle{
+
+    max-width:650px;
+
+    margin:
+        15px
+        auto;
+
+    line-height:1.9;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:21px;
+
+    color:#694654;
+}
+
+.final-love{
+
+    margin-top:20px;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size:40px;
+
+    color:#dc587a;
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+.mobile-controls{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:18px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:300;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    width:min(
+        420px,
+        calc(100% - 30px)
+    );
+}
+
+.mobile-nav-btn{
+
+    height:48px;
+
+    flex:1;
+
+    max-width:190px;
+
+    border:1px solid
+        rgba(210,90,120,.25);
+
+    border-radius:50px;
+
+    background:
+        rgba(255,255,255,.9);
+
+    backdrop-filter:
+        blur(12px);
+
+    color:#c34f70;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(100,30,50,.1);
+
+    transition:
+        transform .25s,
+        background .25s,
+        color .25s;
+}
+
+.mobile-nav-btn:hover{
+
+    transform:
+        translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #df6688,
+            #ee91aa
+        );
+
+    color:#fff;
+}
+
+.mobile-nav-btn:active{
+
+    transform:
+        scale(.96);
+}
+
+.mobile-nav-btn .arrow-icon{
+
+    font-size:17px;
+
+    vertical-align:-1px;
+
+    margin:
+        0 4px;
+}
+
+
+/* Desktop controls */
+
+.desktop-controls{
+
+    position:absolute;
+
+    left:35px;
+
+    bottom:25px;
+
+    z-index:200;
+
+    display:flex;
+
+    gap:8px;
+}
+
+.circle-arrow{
+
+    width:43px;
+    height:43px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        #eab5c3;
+
+    background:
+        rgba(255,255,255,.8);
+
+    color:#cb5373;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.circle-arrow:hover{
+
+    color:#fff;
+
+    background:#df6688;
+
+    transform:
+        scale(1.08);
+}
+
+.page-number{
+
+    position:absolute;
+
+    right:35px;
+
+    bottom:30px;
+
+    z-index:200;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:21px;
+
+    color:#c45171;
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(55,20,35,.45);
+
+    backdrop-filter:
+        blur(10px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.5s;
+}
+
+.popup.show{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.popup-box{
+
+    width:min(510px,90%);
+
+    padding:45px;
+
+    background:#fffaf8;
+
+    border-radius:28px;
+
+    text-align:center;
+
+    box-shadow:
+        0 30px 90px
+        rgba(40,10,25,.25);
+
+    transform:
+        scale(.75)
+        translateY(30px);
+
+    transition:.6s;
+}
+
+.popup.show .popup-box{
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+.popup-heart{
+
+    font-size:60px;
+
+    animation:
+        heartbeat
+        1.2s
+        infinite;
+}
+
+.popup-box h2{
+
+    margin-top:5px;
+
+    font-family:
+        "Allura",
+        cursive;
+
+    font-size:54px;
+
+    font-weight:400;
+
+    color:#d35275;
+}
+
+.popup-box p{
+
+    margin-top:18px;
+
+    line-height:1.8;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:20px;
+
+    color:#6c4755;
+}
+
+
+/* =========================================================
+   FIREWORKS
+========================================================= */
+
+.firework{
+
+    position:fixed;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    z-index:9999;
+
+    pointer-events:none;
+}
+
+.spark{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   GENERAL ANIMATION
+========================================================= */
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.18);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    .nav{
+
+        height:62px;
+
+        padding:
+            0 17px;
+    }
+
+    .logo{
+
+        font-size:29px;
+    }
+
+    .logo span{
+
+        display:none;
+    }
+
+    .nav-menu{
+
+        display:none;
+    }
+
+    .page{
+
+        padding:
+            80px
+            18px
+            90px;
+
+        overflow-y:auto;
+
+        align-items:center;
+    }
+
+    .hero,
+    .promise{
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+        text-align:center;
+    }
+
+    .hero-visual{
+
+        order:-1;
+
+        height:285px;
+    }
+
+    .main-photo{
+
+        width:210px;
+        height:275px;
+    }
+
+    .photo-caption{
+
+        font-size:26px;
+    }
+
+    .decor{
+
+        font-size:35px;
+    }
+
+    .decor.c{
+
+        font-size:25px;
+    }
+
+    .title{
+
+        font-size:49px;
+    }
+
+    .subtitle{
+
+        font-size:14px;
+
+        line-height:1.75;
+    }
+
+    .memory-grid{
+
+        grid-template-columns:1fr;
+
+        max-width:315px;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .polaroid{
+
+        margin-bottom:5px;
+    }
+
+    .polaroid-img{
+
+        height:220px;
+    }
+
+    .thanks-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .thanks-card{
+
+        min-height:125px;
+    }
+
+    .night{
+
+        height:270px;
+
+        order:-1;
+    }
+
+    .promise-copy{
+
+        text-align:center;
+    }
+
+    .promise-copy h2{
+
+        font-size:48px;
+    }
+
+    .promise-list{
+
+        text-align:left;
+
+        max-width:350px;
+
+        margin:
+            20px
+            auto;
+    }
+
+    .gallery-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .gallery-img{
+
+        height:135px;
+    }
+
+    .letter-paper{
+
+        min-height:350px;
+
+        padding:
+            35px
+            25px;
+    }
+
+    .letter-text{
+
+        font-size:20px;
+
+        line-height:1.5;
+    }
+
+    .final-bouquet{
+
+        font-size:80px;
+    }
+
+    .final-title{
+
+        font-size:78px;
+    }
+
+    .final-subtitle{
+
+        font-size:19px;
+    }
+
+    .page-number{
+
+        display:none;
+    }
+
+    .desktop-controls{
+
+        display:none;
+    }
+
+    .mobile-controls{
+
+        display:flex;
+    }
+
+    .envelope{
+
+        transform:
+            scale(.78);
+    }
+
+    .intro-hint{
+
+        margin-top:25px;
+
+        font-size:20px;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:851px){
+
+    .mobile-controls{
+
+        display:none;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-height:700px) and (max-width:850px){
+
+    .page{
+
+        padding-top:75px;
+        padding-bottom:82px;
+    }
+
+    .hero-visual{
+
+        height:220px;
+    }
+
+    .main-photo{
+
+        width:165px;
+        height:215px;
+    }
+
+    .title{
+
+        font-size:40px;
+    }
+
+    .subtitle{
+
+        margin-top:12px;
+    }
+
+    .btn{
+
+        margin-top:16px;
+
+        padding:
+            12px
+            22px;
+    }
+
+    .letter-paper{
+
+        min-height:280px;
+    }
+
+    .letter-text{
+
+        font-size:17px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div
+    class="cursor"
+    id="cursor"
+></div>
+
+<div
+    class="cursor-dot"
+    id="cursorDot"
+></div>
+
+
+<!-- =========================================================
+     LOADING
+========================================================= -->
+
+<div id="loading">
+
+    <div class="loader-heart">
+        ❤️
+    </div>
+
+    <div class="loader-text">
+        Chuẩn bị một món quà cho mẹ...
+    </div>
+
+    <div class="loader-line">
+        <span></span>
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ENVELOPE INTRO
+========================================================= -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            Một món quà nhỏ dành cho mẹ
+        </div>
+
+
+        <div
+            class="envelope"
+            id="envelope"
+        >
+
+            <!-- BACK -->
+
+            <div class="envelope-back"></div>
+
+
+            <!-- LETTER -->
+
+            <div class="letter-inside">
+
+                <h2>
+                    Gửi Mẹ ❤️
+                </h2>
+
+                <p>
+                    Có một điều con muốn nói...
+                </p>
+
+            </div>
+
+
+            <!-- SIDES -->
+
+            <div class="envelope-left"></div>
+
+            <div class="envelope-right"></div>
+
+
+            <!-- BOTTOM -->
+
+            <div class="envelope-bottom"></div>
+
+
+            <!-- FLAP -->
+
+            <div class="envelope-flap"></div>
+
+        </div>
+
+
+        <div class="intro-hint">
+            Chạm vào lá thư để mở ❤️
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<div id="main">
+
+
+    <!-- BACKGROUND -->
+
+    <div class="background">
+
+        <div class="glow one"></div>
+
+        <div class="glow two"></div>
+
+        <div class="glow three"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav class="nav">
+
+        <div class="logo">
+
+            ♡ Dành cho Mẹ
+
+            <span>
+                20.10
+            </span>
+
+        </div>
+
+
+        <div class="nav-menu">
+
+            <button onclick="goTo(0)">
+                Trang chủ
+            </button>
+
+            <button onclick="goTo(1)">
+                Lời chúc
+            </button>
+
+            <button onclick="goTo(2)">
+                Kỷ niệm
+            </button>
+
+            <button onclick="goTo(3)">
+                Cảm ơn
+            </button>
+
+            <button onclick="goTo(5)">
+                Hình ảnh
+            </button>
+
+        </div>
+
+
+        <div
+            class="progress"
+            id="progress"
+        ></div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         PAGES
+    ====================================================== -->
+
+    <div class="pages">
+
+
+        <!-- =================================================
+             PAGE 1
+        ================================================== -->
+
+        <section class="page active">
+
+            <div class="container hero">
+
+
+                <div class="hero-copy">
+
+                    <div class="badge">
+                        🌷 Chúc mừng ngày Phụ nữ Việt Nam
+                    </div>
+
+
+                    <h1 class="title">
+
+                        20 - 10
+
+                        <br>
+
+                        <span class="script">
+                            Gửi người con yêu nhất
+                        </span>
+
+                    </h1>
+
+
+                    <p class="subtitle">
+
+                        Mẹ là người đã cho con
+                        cả bầu trời,
+                        là nơi con luôn có thể trở về,
+                        và là người yêu thương con
+                        theo cách dịu dàng nhất.
+
+                    </p>
+
+
+                    <button
+                        class="btn"
+                        onclick="goTo(1)"
+                    >
+
+                        Mở món quà của con ❤️
+
+                    </button>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="decor a">
+                        🌸
+                    </div>
+
+                    <div class="decor b">
+                        🌷
+                    </div>
+
+                    <div class="decor c">
+                        ♡
+                    </div>
+
+
+                    <div class="main-photo">
+
+                        <div class="photo">
+
+                            <div class="photo-caption">
+                                Mẹ là điều tuyệt vời nhất ❤️
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 2
+        ================================================== -->
+
+        <section class="page">
+
+            <div class="container letter">
+
+                <div class="badge">
+                    💌 Một lá thư nhỏ
+                </div>
+
+
+                <h1 class="title">
+
+                    Lời chúc
+
+                    <span class="script">
+                        từ con
+                    </span>
+
+                </h1>
+
+
+                <div class="letter-paper">
+
+                    <div class="letter-text">
+
+                        Mẹ à...
+
+                        <br><br>
+
+                        Nhân ngày 20/10,
+                        con chúc mẹ luôn mạnh khỏe,
+                        luôn vui vẻ và luôn nở
+                        nụ cười thật đẹp.
+
+                        <br><br>
+
+                        Cảm ơn mẹ vì những bữa cơm,
+                        những lời nhắc nhở,
+                        những lần chờ con về,
+                        và tất cả những điều mẹ
+                        đã âm thầm làm cho con.
+
+                        <br><br>
+
+                        Có thể con không thường xuyên
+                        nói ra...
+
+                        <br>
+
+                        nhưng con yêu mẹ
+                        <strong>
+                            rất rất nhiều.
+                        </strong>
+
+                        <br><br>
+
+                        Chúc mẹ một ngày 20/10
+                        thật hạnh phúc! ❤️
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="btn"
+                    onclick="showPopup()"
+                >
+                    Con còn một điều muốn nói...
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 3
+        ================================================== -->
+
+        <section class="page">
+
+            <div class="container memories">
+
+                <div class="badge">
+                    📸 Những điều con nhớ
+                </div>
+
+
+                <h1 class="title">
+
+                    Những kỷ niệm
+
+                    <span class="script">
+                        đẹp nhất
+                    </span>
+
+                </h1>
+
+
+                <p
+                    class="subtitle"
+                    style="
+                    margin-left:auto;
+                    margin-right:auto;
+                    "
+                >
+
+                    Có những khoảnh khắc
+                    rất bình thường,
+                    mà sau này con mới nhận ra
+                    đó chính là những ký ức
+                    quý giá nhất.
+
+                </p>
+
+
+                <div class="memory-grid">
+
+
+                    <div class="polaroid">
+
+                        <div class="polaroid-img p1"></div>
+
+                        <div class="polaroid-caption">
+
+                            Những ngày mẹ luôn ở bên con...
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="polaroid">
+
+                        <div class="polaroid-img p2"></div>
+
+                        <div class="polaroid-caption">
+
+                            Mẹ luôn là người ủng hộ con...
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="polaroid">
+
+                        <div class="polaroid-img p3"></div>
+
+                        <div class="polaroid-caption">
+
+                            Và mẹ luôn là người con yêu nhất.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 4
+        ================================================== -->
+
+        <section class="page">
+
+            <div class="container thanks">
+
+                <div class="badge">
+                    🌷 Có những điều con muốn cảm ơn
+                </div>
+
+
+                <h1 class="title">
+
+                    Cảm ơn
+
+                    <span class="script">
+                        mẹ
+                    </span>
+
+                </h1>
+
+
+                <p
+                    class="subtitle"
+                    style="
+                    margin-left:auto;
+                    margin-right:auto;
+                    "
+                >
+
+                    Có lẽ cả đời này con
+                    cũng không thể nói hết
+                    được những điều con biết ơn mẹ.
+
+                </p>
+
+
+                <div class="thanks-grid">
+
+
+                    <div class="thanks-card">
+
+                        <div class="thanks-icon">
+                            ❤️
+                        </div>
+
+                        <h3>
+                            Vì luôn yêu thương con
+                        </h3>
+
+                    </div>
+
+
+                    <div class="thanks-card">
+
+                        <div class="thanks-icon">
+                            🤗
+                        </div>
+
+                        <h3>
+                            Vì luôn ở bên con
+                        </h3>
+
+                    </div>
+
+
+                    <div class="thanks-card">
+
+                        <div class="thanks-icon">
+                            🌷
+                        </div>
+
+                        <h3>
+                            Vì những hy sinh
+                        </h3>
+
+                    </div>
+
+
+                    <div class="thanks-card">
+
+                        <div class="thanks-icon">
+                            🏠
+                        </div>
+
+                        <h3>
+                            Vì luôn là nhà của con
+                        </h3>
+
+                    </div>
+
+
+                    <div class="thanks-card">
+
+                        <div class="thanks-icon">
+                            ✨
+                        </div>
+
+                        <h3>
+                            Vì luôn tin tưởng con
+                        </h3>
+
+                    </div>
+
+
+                    <div class="thanks-card">
+
+                        <div class="thanks-icon">
+                            👑
+                        </div>
+
+                        <h3>
+                            Vì mẹ là người tuyệt vời nhất
+                        </h3>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 5
+        ================================================== -->
+
+        <section class="page">
+
+            <div class="container promise">
+
+
+                <div class="night">
+
+                    <div class="star-field"></div>
+
+                    <div class="moon"></div>
+
+                    <div class="city"></div>
+
+                </div>
+
+
+                <div class="promise-copy">
+
+                    <div class="badge">
+                        🌙 Một lời hứa
+                    </div>
+
+
+                    <h2>
+
+                        Lời hứa
+
+                        <span class="script">
+                            của con
+                        </span>
+
+                    </h2>
+
+
+                    <p class="subtitle">
+
+                        Con biết mình chưa phải
+                        là người con hoàn hảo.
+
+                        <br><br>
+
+                        Nhưng con sẽ cố gắng
+                        từng ngày để trở thành
+                        người mà mẹ có thể tự hào.
+
+                    </p>
+
+
+                    <ul class="promise-list">
+
+                        <li>
+                            Con sẽ cố gắng học tập và trưởng thành.
+                        </li>
+
+                        <li>
+                            Con sẽ chăm sóc mẹ nhiều hơn.
+                        </li>
+
+                        <li>
+                            Con sẽ nhớ những gì mẹ đã dạy.
+                        </li>
+
+                        <li>
+                            Con sẽ cố gắng trở thành người tốt.
+                        </li>
+
+                        <li>
+                            Và con sẽ luôn yêu thương mẹ.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 6
+        ================================================== -->
+
+        <section class="page">
+
+            <div class="container gallery">
+
+                <div class="badge">
+                    📷 Góc nhỏ của gia đình
+                </div>
+
+
+                <h1 class="title">
+
+                    Những hình ảnh
+
+                    <span class="script">
+                        yêu thương
+                    </span>
+
+                </h1>
+
+
+                <p
+                    class="subtitle"
+                    style="
+                    margin-left:auto;
+                    margin-right:auto;
+                    "
+                >
+
+                    Những bức ảnh nhỏ,
+                    những khoảnh khắc nhỏ,
+                    nhưng lại chứa cả một khoảng trời
+                    ký ức.
+
+                </p>
+
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-img g1"></div>
+
+                    <div class="gallery-img g2"></div>
+
+                    <div class="gallery-img g3"></div>
+
+                    <div class="gallery-img g4"></div>
+
+                </div>
+
+
+                <button
+                    class="btn"
+                    onclick="goTo(6)"
+                >
+                    Đến điều cuối cùng... ❤️
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAGE 7
+        ================================================== -->
+
+        <section class="page">
+
+            <div class="container final">
+
+                <div class="final-bouquet">
+                    💐
+                </div>
+
+
+                <div class="badge">
+                    ❤️ Dành riêng cho mẹ
+                </div>
+
+
+                <h1 class="final-title">
+                    Happy 20-10
+                </h1>
+
+
+                <p class="final-subtitle">
+
+                    Chúc mẹ luôn mạnh khỏe,
+                    luôn vui vẻ, luôn hạnh phúc,
+                    luôn xinh đẹp và mãi mãi
+                    là người phụ nữ tuyệt vời nhất
+                    trong lòng con.
+
+                </p>
+
+
+                <div class="final-love">
+
+                    Con yêu mẹ rất nhiều ❤️
+
+                </div>
+
+
+                <button
+                    class="btn"
+                    onclick="finalCelebration()"
+                >
+
+                    Gửi mẹ một cái ôm 🤗
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         DESKTOP CONTROLS
+    ====================================================== -->
+
+    <div class="desktop-controls">
+
+        <button
+            class="circle-arrow"
+            onclick="previousPage()"
+        >
+            ←
+        </button>
+
+        <button
+            class="circle-arrow"
+            onclick="nextPage()"
+        >
+            →
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOBILE BACK / NEXT
+    ====================================================== -->
+
+    <div class="mobile-controls">
+
+        <button
+            class="mobile-nav-btn"
+            onclick="previousPage()"
+        >
+
+            <span class="arrow-icon">
+                ←
+            </span>
+
+            BACK
+
+        </button>
+
+
+        <button
+            class="mobile-nav-btn"
+            onclick="nextPage()"
+        >
+
+            NEXT
+
+            <span class="arrow-icon">
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <div class="page-number">
+
+        <span id="pageNumber">
+            1
+        </span>
+
+        / 7
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================================
+     POPUP
+========================================================= -->
+
+<div
+    class="popup"
+    id="popup"
+>
+
+    <div class="popup-box">
+
+        <div class="popup-heart">
+            ❤️
+        </div>
+
+
+        <h2>
+            Mẹ ơi...
+        </h2>
+
+
+        <p>
+
+            Có thể con không thường xuyên
+            nói điều này.
+
+            <br><br>
+
+            Nhưng mẹ hãy luôn nhớ rằng:
+
+            <br><br>
+
+            <strong>
+                Mẹ là người con yêu thương,
+                biết ơn và trân trọng nhất.
+            </strong>
+
+            <br><br>
+
+            Cảm ơn mẹ vì đã đến bên
+            cuộc đời con.
+
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="closePopup()"
+        >
+            Con yêu mẹ ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+const pages =
+    document.querySelectorAll(".page");
+
+const navButtons =
+    document.querySelectorAll(
+        ".nav-menu button"
+    );
+
+const pageNumber =
+    document.getElementById(
+        "pageNumber"
+    );
+
+const progress =
+    document.getElementById(
+        "progress"
+    );
+
+const main =
+    document.getElementById(
+        "main"
+    );
+
+let currentPage = 0;
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                const loading =
+                    document.getElementById(
+                        "loading"
+                    );
+
+                loading.style.opacity =
+                    "0";
+
+                setTimeout(
+                    () => {
+
+                        loading.style.display =
+                            "none";
+
+                    },
+                    1200
+                );
+
+            },
+            2000
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ENVELOPE OPENING
+========================================================= */
+
+const envelope =
+    document.getElementById(
+        "envelope"
+    );
+
+const intro =
+    document.getElementById(
+        "intro"
+    );
+
+
+envelope.addEventListener(
+    "click",
+    () => {
+
+        if(
+            envelope.classList.contains(
+                "open"
+            )
+        ){
+            return;
+        }
+
+
+        envelope.classList.add(
+            "open"
+        );
+
+
+        createParticles(15);
+
+
+        setTimeout(
+            () => {
+
+                intro.style.opacity =
+                    "0";
+
+                intro.style.transform =
+                    "scale(1.04)";
+
+
+                setTimeout(
+                    () => {
+
+                        intro.style.display =
+                            "none";
+
+                        main.classList.add(
+                            "show"
+                        );
+
+                        startParticles();
+
+                    },
+                    1000
+                );
+
+            },
+            1700
+        );
+
+    }
+);
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function goTo(index){
+
+    if(index < 0){
+
+        index =
+            pages.length - 1;
+
+    }
+
+    if(index >= pages.length){
+
+        index = 0;
+
+    }
+
+
+    if(index === currentPage){
+
+        return;
+
+    }
+
+
+    const oldPage =
+        currentPage;
+
+
+    pages[oldPage]
+        .classList
+        .remove("active");
+
+
+    pages[oldPage]
+        .classList
+        .add("prev");
+
+
+    currentPage =
+        index;
+
+
+    pages[currentPage]
+        .classList
+        .add("active");
+
+
+    setTimeout(
+        () => {
+
+            pages[oldPage]
+                .classList
+                .remove("prev");
+
+        },
+        900
+    );
+
+
+    pageNumber.innerText =
+        currentPage + 1;
+
+
+    progress.style.width =
+        (
+            (currentPage + 1)
+            /
+            pages.length
+            *
+            100
+        ) + "%";
+
+
+    navButtons.forEach(
+        (button,index) => {
+
+            button.classList.toggle(
+                "active",
+                index === currentPage
+            );
+
+        }
+    );
+
+
+    createParticles(6);
+
+}
+
+
+function nextPage(){
+
+    goTo(
+        currentPage + 1
+    );
+
+}
+
+
+function previousPage(){
+
+    goTo(
+        currentPage - 1
+    );
+
+}
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ){
+
+            nextPage();
+
+        }
+
+        if(
+            event.key ===
+            "ArrowLeft"
+        ){
+
+            previousPage();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SWIPE
+========================================================= */
+
+let touchStartX = 0;
+
+document.addEventListener(
+    "touchstart",
+    event => {
+
+        touchStartX =
+            event.changedTouches[0]
+            .screenX;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+document.addEventListener(
+    "touchend",
+    event => {
+
+        const touchEndX =
+            event.changedTouches[0]
+            .screenX;
+
+        const difference =
+            touchStartX -
+            touchEndX;
+
+
+        if(
+            Math.abs(difference) > 60
+        ){
+
+            if(difference > 0){
+
+                nextPage();
+
+            }else{
+
+                previousPage();
+
+            }
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleTypes = [
+
+    "❤️",
+    "♡",
+    "🌸",
+    "🌷",
+    "✿",
+    "✨"
+
+];
+
+
+function createParticle(){
+
+    const particle =
+        document.createElement(
+            "div"
+        );
+
+
+    particle.className =
+        "particle";
+
+
+    particle.innerText =
+        particleTypes[
+            Math.floor(
+                Math.random()
+                *
+                particleTypes.length
+            )
+        ];
+
+
+    particle.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    particle.style.fontSize =
+        (
+            10 +
+            Math.random() * 20
+        ) + "px";
+
+
+    particle.style.animationDuration =
+        (
+            5 +
+            Math.random() * 8
+        ) + "s";
+
+
+    particle.style.animationDelay =
+        (
+            Math.random() * 1.5
+        ) + "s";
+
+
+    document.body.appendChild(
+        particle
+    );
+
+
+    setTimeout(
+        () => {
+
+            particle.remove();
+
+        },
+        15000
+    );
+
+}
+
+
+function createParticles(
+    amount
+){
+
+    for(
+        let i=0;
+        i<amount;
+        i++
+    ){
+
+        setTimeout(
+            () => {
+
+                createParticle();
+
+            },
+            i * 80
+        );
+
+    }
+
+}
+
+
+function startParticles(){
+
+    createParticles(20);
+
+
+    setInterval(
+        () => {
+
+            createParticle();
+
+        },
+        750
+    );
+
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+function showPopup(){
+
+    document
+        .getElementById(
+            "popup"
+        )
+        .classList
+        .add("show");
+
+
+    createParticles(20);
+
+}
+
+
+function closePopup(){
+
+    document
+        .getElementById(
+            "popup"
+        )
+        .classList
+        .remove("show");
+
+}
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+const cursor =
+    document.getElementById(
+        "cursor"
+    );
+
+const cursorDot =
+    document.getElementById(
+        "cursorDot"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        cursor.style.left =
+            event.clientX + "px";
+
+        cursor.style.top =
+            event.clientY + "px";
+
+
+        cursorDot.style.left =
+            event.clientX + "px";
+
+        cursorDot.style.top =
+            event.clientY + "px";
+
+    }
+);
+
+
+/* =========================================================
+   CURSOR HOVER
+========================================================= */
+
+document
+    .querySelectorAll(
+        "button,.envelope"
+    )
+    .forEach(
+        element => {
+
+            element.addEventListener(
+                "mouseenter",
+                () => {
+
+                    cursor.style.width =
+                        "42px";
+
+                    cursor.style.height =
+                        "42px";
+
+                    cursor.style.background =
+                        "rgba(223,102,136,.08)";
+
+                }
+            );
+
+
+            element.addEventListener(
+                "mouseleave",
+                () => {
+
+                    cursor.style.width =
+                        "24px";
+
+                    cursor.style.height =
+                        "24px";
+
+                    cursor.style.background =
+                        "transparent";
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   FINAL CELEBRATION
+========================================================= */
+
+function finalCelebration(){
+
+    createParticles(100);
+
+    fireworks();
+
+
+    setTimeout(
+        () => {
+
+            createParticles(100);
+
+        },
+        700
+    );
+
+
+    setTimeout(
+        () => {
+
+            createParticles(100);
+
+        },
+        1400
+    );
+
+}
+
+
+/* =========================================================
+   FIREWORKS
+========================================================= */
+
+function fireworks(){
+
+    for(
+        let i=0;
+        i<10;
+        i++
+    ){
+
+        setTimeout(
+            () => {
+
+                createFirework();
+
+            },
+            i * 230
+        );
+
+    }
+
+}
+
+
+function createFirework(){
+
+    const x =
+        15 +
+        Math.random() * 70;
+
+    const y =
+        15 +
+        Math.random() * 55;
+
+
+    const firework =
+        document.createElement(
+            "div"
+        );
+
+
+    firework.className =
+        "firework";
+
+
+    firework.style.left =
+        x + "vw";
+
+    firework.style.top =
+        y + "vh";
+
+
+    document.body.appendChild(
+        firework
+    );
+
+
+    const colors = [
+
+        "#ff668f",
+        "#ffbd6b",
+        "#ffffff",
+        "#d9a4ff",
+        "#ff8ec2"
+
+    ];
+
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        const spark =
+            document.createElement(
+                "div"
+            );
+
+
+        spark.className =
+            "spark";
+
+
+        spark.style.background =
+            colors[
+                Math.floor(
+                    Math.random()
+                    *
+                    colors.length
+                )
+            ];
+
+
+        firework.appendChild(
+            spark
+        );
+
+
+        const angle =
+            Math.random()
+            *
+            Math.PI
+            *
+            2;
+
+
+        const distance =
+            60 +
+            Math.random() * 130;
+
+
+        const dx =
+            Math.cos(angle)
+            *
+            distance;
+
+
+        const dy =
+            Math.sin(angle)
+            *
+            distance;
+
+
+        spark.animate(
+            [
+                {
+                    transform:
+                        "translate(0,0) scale(1)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        `translate(${dx}px,${dy}px) scale(0)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:
+                    900 +
+                    Math.random() * 500,
+
+                easing:
+                    "cubic-bezier(.2,.8,.3,1)"
+            }
+        );
+
+    }
+
+
+    setTimeout(
+        () => {
+
+            firework.remove();
+
+        },
+        1600
+    );
+
+}
+
+
+/* =========================================================
+   DOUBLE CLICK HEART
+========================================================= */
+
+document.addEventListener(
+    "dblclick",
+    event => {
+
+        const heart =
+            document.createElement(
+                "div"
+            );
+
+
+        heart.innerText =
+            "❤️";
+
+
+        heart.style.position =
+            "fixed";
+
+
+        heart.style.left =
+            event.clientX + "px";
+
+
+        heart.style.top =
+            event.clientY + "px";
+
+
+        heart.style.fontSize =
+            "35px";
+
+
+        heart.style.zIndex =
+            "9999";
+
+
+        heart.style.pointerEvents =
+            "none";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        heart.animate(
+            [
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(.5)",
+                    opacity:0
+                },
+
+                {
+                    transform:
+                        "translate(-50%,-100px) scale(1.3)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        "translate(-50%,-180px) scale(1)",
+                    opacity:0
+                }
+            ],
+            {
+                duration:1200,
+                easing:"ease-out"
+            }
+        ).onfinish =
+            () => {
+
+                heart.remove();
+
+            };
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL PARTICLES
+========================================================= */
+
+setTimeout(
+    () => {
+
+        createParticles(10);
+
+    },
+    2800
+);
+
+</script>
+
+</body>
+</html>
